@@ -1,0 +1,67 @@
+'use client'
+
+import { Canvas, useFrame } from '@react-three/fiber'
+import { useGLTF, OrbitControls } from '@react-three/drei'
+import { useRef } from 'react'
+import * as THREE from 'three'
+import { useMediaQuery } from 'react-responsive'
+
+function RotatingModel({ scale }: { scale: [number, number, number] }) {
+  const modelRef = useRef<THREE.Group>(null)
+  const { scene } = useGLTF('/earth.glb')
+
+  useFrame(() => {
+    if (modelRef.current) {
+      modelRef.current.rotation.y += 0.009
+    }
+  })
+
+  return (
+    <primitive
+      object={scene}
+      ref={modelRef}
+      position={[0, 0, 0]}
+      scale={scale}
+    />
+  )
+}
+
+function ScrollGlb() {
+  const isMobile = useMediaQuery({ maxWidth: 768 })
+
+  return (
+    <div
+      id="scroll-section"
+      className="w-full relative"
+      style={{
+        height: '60vh',
+        overflow: 'hidden',
+        margin: 0,
+        padding: 0,
+      }}
+    >
+      <Canvas
+        camera={{ position: [0, 0, 6], fov: 1 }}
+        style={{
+          width: '100%',
+          height: '100%',
+          display: 'block',
+          overflow: 'hidden',
+          touchAction: 'none',
+        }}
+      >
+        {/* Soft Ambient Light */}
+        <ambientLight intensity={0.8} />
+
+        {/* Centered and subtle directional light */}
+        <directionalLight position={[0, 0, 6]} intensity={0.9} />
+
+        <RotatingModel scale={isMobile ? [6.5, 6.5, 6.5] : [7.5, 7.5, 7.5]} />
+
+        {!isMobile && <OrbitControls />}
+      </Canvas>
+    </div>
+  )
+}
+
+export default ScrollGlb
