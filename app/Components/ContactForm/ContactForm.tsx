@@ -26,20 +26,24 @@ function ContactForm() {
   return (
     <div className="w-full space-y-8">
       {/* Header */}
-      <div className="text-center lg:text-left space-y-4" 
-           style={{ animation: 'fadeIn 0.6s ease-out' }}>
+      <div
+        className="text-center lg:text-left space-y-4"
+        style={{ animation: 'fadeIn 0.6s ease-out' }}
+      >
         <h2 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
           Get In Touch
         </h2>
         <p className="text-lg text-muted-foreground max-w-lg">
-          Have a question or want to work together? We'd love to hear from you. 
-          Send us a message and we'll respond as soon as possible.
+          Have a question or want to work together? We&apos;d love to hear from you. 
+          Send us a message and we&apos;ll respond as soon as possible.
         </p>
       </div>
 
       {/* Contact Info Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4"
-           style={{ animation: 'fadeIn 0.6s ease-out 0.2s both' }}>
+      <div
+        className="grid grid-cols-1 md:grid-cols-3 gap-4"
+        style={{ animation: 'fadeIn 0.6s ease-out 0.2s both' }}
+      >
         {[{
           icon: <FiMail className="h-5 w-5 text-blue-600" />,
           title: 'Email',
@@ -71,16 +75,20 @@ function ContactForm() {
       </div>
 
       {/* Contact Form */}
-      <div className="p-6 rounded-lg  backdrop-blur-sm border shadow-lg"
-           style={{ animation: 'fadeIn 0.6s ease-out 0.4s both' }}>
+      <div
+        className="p-6 rounded-lg backdrop-blur-sm border shadow-lg"
+        style={{ animation: 'fadeIn 0.6s ease-out 0.4s both' }}
+      >
         <div className="mb-6">
           <h3 className="text-xl font-semibold">Send us a message</h3>
-          <p className="text-sm text-gray-500">Fill out the form and we'll respond within 24 hours.</p>
+          <p className="text-sm text-gray-500">
+            Fill out the form and we&apos;ll respond within 24 hours.
+          </p>
         </div>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <label htmlFor="name" className="block  font-medium">Name</label>
+              <label htmlFor="name" className="block font-medium">Name</label>
               <input
                 id="name"
                 name="name"
@@ -92,7 +100,7 @@ function ContactForm() {
               />
             </div>
             <div className="space-y-2">
-              <label htmlFor="email" className="block  font-medium">Email</label>
+              <label htmlFor="email" className="block font-medium">Email</label>
               <input
                 id="email"
                 name="email"
@@ -107,20 +115,20 @@ function ContactForm() {
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="subject" className="block  font-medium">Subject</label>
+            <label htmlFor="subject" className="block font-medium">Subject</label>
             <input
               id="subject"
               name="subject"
               value={formData.subject}
               onChange={handleChange}
-              placeholder="What's this about?"
+              placeholder="What&apos;s this about?"
               className="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-300"
               required
             />
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="message" className="block   font-medium">Message</label>
+            <label htmlFor="message" className="block font-medium">Message</label>
             <textarea
               id="message"
               name="message"

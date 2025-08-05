@@ -1,6 +1,6 @@
 'use client'
 
-import Globe3D from './ScrollGlb'
+
 import ContactForm from './ContactForm'
 import ScrollGlb from './ScrollGlb'
 
