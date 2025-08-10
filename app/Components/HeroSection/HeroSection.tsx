@@ -7,10 +7,15 @@ import Link from 'next/link';
 import { useMediaQuery } from 'react-responsive';
 import SearchForm from '../SearchForm';
 
+// Lottie Loader
+import { DotLottiePlayer } from '@dotlottie/react-player';
+import '@dotlottie/react-player/dist/index.css';
+
 export default function HeroSection() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
+  const [loading, setLoading] = useState(true);
   const trips = [
     { name: 'Trip To Varkala', people: 27, img: '/Varkala.png' },
     { name: 'Trip To Munnar', people: 31, img: '/Munnar.png' },
@@ -25,7 +30,15 @@ export default function HeroSection() {
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Auto-switch on mobile every 6 seconds
+  // Loader timer
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000); // change delay if needed
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Auto-switch on mobile
   useEffect(() => {
     if (isMobile) {
       const interval = setInterval(() => {
@@ -35,7 +48,7 @@ export default function HeroSection() {
     }
   }, [isMobile, trips.length]);
 
-
+  // Auto-switch on desktop
   useEffect(() => {
     if (!isMobile) {
       const interval = setInterval(() => {
@@ -52,6 +65,19 @@ export default function HeroSection() {
     return '/wayanadwebb.jpg';
   };
 
+  // Show loader first
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen bg-white">
+        <DotLottiePlayer
+          src="/loading.lottie" // Put file in public/
+          autoplay
+          loop
+          style={{ width: '200px', height: '200px' }}
+        />
+      </div>
+    );
+  }
 
   return (
     <>
@@ -74,18 +100,18 @@ export default function HeroSection() {
 
       {/* Hero Section */}
       <div
-        className="w-full h-100vh  lg:h-100vh bg-cover bg-center relative  transition-all duration-500"
+        className="w-full h-100vh lg:h-100vh bg-cover bg-center relative transition-all duration-500"
         style={{
-          backgroundImage: `url(${isMobile
+          backgroundImage: `url(${
+            isMobile
               ? currentIndex % 3 === 0
                 ? '/varkalawebb.jpg'
                 : currentIndex % 3 === 1
-                  ? '/munnarww.jpg'
-                  : '/wayanadwebb.jpg'
+                ? '/munnarww.jpg'
+                : '/wayanadwebb.jpg'
               : getDesktopBg()
-            })`,
+          })`,
         }}
-
       >
         {/* Desktop Nav */}
         <nav className="hidden md:flex justify-end items-center w-full text-lg p-15 space-x-20 text-white font-semibold">
@@ -97,13 +123,13 @@ export default function HeroSection() {
         </nav>
 
         {/* Hero Content */}
-        <div className="top-0 left-0 w-full h-full  bg-gradient-to-r to-transparent flex flex-col md:flex-row">
+        <div className="top-0 left-0 w-full h-full bg-gradient-to-r to-transparent flex flex-col md:flex-row">
           {/* Left Text Content */}
-          <div className='relative p-6 md:p-16  w-full h-full flex flex-col  justify-center space-y-10'>
-            <div className="relative p-6 md:p-16 md:w-1/2 flex flex-col justify-center space-y-7 ">
-              <p className="text-md  md:text-lg uppercase text-white">Mountains | Plains | Beaches</p>
-              <h1 className="text-3xl md:text-6xl font-bold text-white ">
-                Spend your<br/> vacation <br />
+          <div className="relative p-6 md:p-16 w-full h-full flex flex-col justify-center space-y-10">
+            <div className="relative p-6 md:p-16 md:w-1/2 flex flex-col justify-center space-y-7">
+              <p className="text-md md:text-lg uppercase text-white">Mountains | Plains | Beaches</p>
+              <h1 className="text-3xl md:text-6xl font-bold text-white">
+                Spend your<br /> vacation <br />
                 with our activities
               </h1>
 
@@ -128,7 +154,7 @@ export default function HeroSection() {
                           className="flex transition-transform duration-700 ease-in-out"
                           style={{
                             transform: `translateX(-${(currentIndex / 3) * 100}%)`,
-                            width: `${(Math.ceil(trips.length / 3)) * 100}%`
+                            width: `${Math.ceil(trips.length / 3) * 100}%`,
                           }}
                         >
                           {Array.from({ length: Math.ceil(trips.length / 3) }).map((_, groupIndex) => (
@@ -159,16 +185,9 @@ export default function HeroSection() {
                   )}
                 </div>
               </div>
-
-
             </div>
             <SearchForm />
           </div>
-
-          {/* SearchForm */}
-          {/* <div className="absolute top-[75%] flex justify-center w-full">
-            
-          </div> */}
 
           {/* Mobile Nav Toggle */}
           <div className="absolute top-4 right-4 md:hidden z-50">
@@ -196,11 +215,8 @@ export default function HeroSection() {
               <button className="bg-orange-300 text-black px-4 py-2 rounded-md">Request a quote</button>
             </div>
           )}
-
         </div>
-
       </div>
-
     </>
   );
 }
