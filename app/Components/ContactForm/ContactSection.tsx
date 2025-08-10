@@ -15,10 +15,10 @@ function ContactSection() {
               <ScrollGlb/>
               
               {/* Decorative elements */}
-              <div className="absolute -top-8 -left-8 w-16 h-16 bg-blue-500/20 rounded-full blur-xl animate-pulse" />
-              <div className="absolute -bottom-8 -right-8 w-20 h-20 bg-purple-500/20 rounded-full blur-xl" 
+              <div className="absolute -top-8 -left-8 w-16 h-16  rounded-full blur-xl animate-pulse" />
+              <div className="absolute -bottom-8 -right-8 w-20 h-20  rounded-full blur-xl" 
                    style={{ animation: 'pulse 2s ease-in-out infinite 1s' }} />
-              <div className="absolute top-1/2 -right-12 w-12 h-12 bg-indigo-400/30 rounded-full blur-lg" 
+              <div className="absolute top-1/2 -right-12 w-12 h-12  rounded-full blur-lg" 
                    style={{ animation: 'pulse 2s ease-in-out infinite 2s' }} />
             </div>
           </div>

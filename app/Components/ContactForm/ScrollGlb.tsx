@@ -1,18 +1,18 @@
 'use client'
 
 import { Canvas, useFrame } from '@react-three/fiber'
-import { useGLTF, OrbitControls } from '@react-three/drei'
+import { useGLTF } from '@react-three/drei'
 import { useRef } from 'react'
 import * as THREE from 'three'
 import { useMediaQuery } from 'react-responsive'
 
-function RotatingModel({ scale }: { scale: [number, number, number] }) {
+function RotatingEarth({ scale }: { scale: [number, number, number] }) {
   const modelRef = useRef<THREE.Group>(null)
   const { scene } = useGLTF('/earth.glb')
 
   useFrame(() => {
     if (modelRef.current) {
-      modelRef.current.rotation.y += 0.009
+      modelRef.current.rotation.y += 0.005 // smooth rotation
     }
   })
 
@@ -26,12 +26,11 @@ function RotatingModel({ scale }: { scale: [number, number, number] }) {
   )
 }
 
-function ScrollGlb() {
+export default function ScrollGlb() {
   const isMobile = useMediaQuery({ maxWidth: 768 })
 
   return (
     <div
-      id="scroll-section"
       className="w-full relative"
       style={{
         height: '60vh',
@@ -41,27 +40,20 @@ function ScrollGlb() {
       }}
     >
       <Canvas
-        camera={{ position: [0, 0, 6], fov: 1 }}
+        camera={{ position: [0, 0, 6], fov: 25 }}
         style={{
           width: '100%',
           height: '100%',
-          display: 'block',
-          overflow: 'hidden',
-          touchAction: 'none',
+          background: 'transparent',
         }}
       >
-        {/* Soft Ambient Light */}
+        {/* Lights */}
         <ambientLight intensity={0.8} />
-
-        {/* Centered and subtle directional light */}
         <directionalLight position={[0, 0, 6]} intensity={0.9} />
 
-        <RotatingModel scale={isMobile ? [6.5, 6.5, 6.5] : [7.5, 7.5, 7.5]} />
-
-        {!isMobile && <OrbitControls />}
+        {/* Rotating Earth */}
+        <RotatingEarth scale={isMobile ? [3.0, 3.0, 3.0] : [4.5, 4.5, 4.5]} />
       </Canvas>
     </div>
   )
 }
-
-export default ScrollGlb
