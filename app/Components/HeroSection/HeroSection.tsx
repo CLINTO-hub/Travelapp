@@ -78,10 +78,10 @@ export default function HeroSection() {
         style={{
           backgroundImage: `url(${isMobile
               ? currentIndex % 3 === 0
-                ? '/varkalaweb.jpg'
+                ? '/varkalawebb.jpg'
                 : currentIndex % 3 === 1
-                  ? '/munnarweb.jpg'
-                  : '/wayanadweb.jpg'
+                  ? '/munnarww.jpg'
+                  : '/wayanadwebb.jpg'
               : getDesktopBg()
             })`,
         }}
