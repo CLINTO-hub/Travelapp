@@ -47,9 +47,9 @@ export default function HeroSection() {
 
   const getDesktopBg = () => {
     const group = Math.floor(currentIndex / 3) % 3;
-    if (group === 0) return '/varkalaweb.jpg';
-    if (group === 1) return '/munnarweb.jpg';
-    return '/wayanadweb.jpg';
+    if (group === 0) return '/varkalawebb.jpg';
+    if (group === 1) return '/munnarww.jpg';
+    return '/wayanadwebb.jpg';
   };
 
 
