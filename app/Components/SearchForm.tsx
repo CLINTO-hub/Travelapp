@@ -77,5 +77,7 @@ export default function SearchForm() {
         </div>
       </div>
     </div>
+
+    
   );
 }
