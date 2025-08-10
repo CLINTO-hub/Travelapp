@@ -23,35 +23,50 @@ export default function HeroSection() {
     { name: 'Trip To Wayanad', people: 20, img: '/Wayanad.png' },
   ];
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const mobileBgs = ['/varkalawebb.jpg', '/munnarww.jpg', '/wayanadwebb.jpg'];
+  const desktopBgs = ['/varkalawebb.jpg', '/munnarww.jpg', '/wayanadwebb.jpg'];
 
-  // Auto-switch on mobile every 6 seconds
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [slideDirection, setSlideDirection] = useState('right');
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  const backgrounds = isMobile ? mobileBgs : desktopBgs;
+
+  // Preload background images to avoid flicker
+  useEffect(() => {
+    backgrounds.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+    setImageLoaded(true);
+  }, [backgrounds]);
+
+  // Auto-slide for mobile
   useEffect(() => {
     if (isMobile) {
       const interval = setInterval(() => {
-        setCurrentIndex((prev) => (prev + 1) % trips.length);
-      }, 3000);
+        setSlideDirection('right');
+        setCurrentIndex((prev) => (prev + 1) % backgrounds.length);
+      }, 4000);
       return () => clearInterval(interval);
     }
-  }, [isMobile, trips.length]);
+  }, [isMobile, backgrounds.length]);
 
-
+  // Auto-slide for desktop (every 3 cards)
   useEffect(() => {
     if (!isMobile) {
       const interval = setInterval(() => {
+        setSlideDirection('right');
         setCurrentIndex((prev) => (prev + 3) % trips.length);
-      }, 6000);
+      }, 7000);
       return () => clearInterval(interval);
     }
   }, [isMobile, trips.length]);
 
   const getDesktopBg = () => {
     const group = Math.floor(currentIndex / 3) % 3;
-    if (group === 0) return '/varkalawebb.jpg';
-    if (group === 1) return '/munnarww.jpg';
-    return '/wayanadwebb.jpg';
+    return desktopBgs[group];
   };
-
 
   return (
     <>
@@ -62,13 +77,12 @@ export default function HeroSection() {
           <h3 className="text-black font-bold">UK</h3>
         </div>
         <h3 className="hidden md:flex text-black text-md">Call us today until 17:30</h3>
-       <div className="flex gap-2 whitespace-nowrap">
-  <img src="/Symbol.png" alt="logo" className="h-6" />
-  <a href="tel:108912356789" className="text-black font-extrabold hover:underline">
-    1089 1235 6789
-  </a>
-</div>
-
+        <div className="flex gap-2 whitespace-nowrap">
+          <img src="/Symbol.png" alt="logo" className="h-6" />
+          <a href="tel:108912356789" className="text-black font-extrabold hover:underline">
+            1089 1235 6789
+          </a>
+        </div>
         <p className="hidden md:flex text-black">or</p>
         <button className="hidden md:flex bg-orange-300 text-white px-4 text-sm md:text-md py-2 rounded-full">
           Request a quote
@@ -76,38 +90,44 @@ export default function HeroSection() {
       </div>
 
       {/* Hero Section */}
-      <div
-        className="w-full h-100vh  lg:h-100vh bg-cover bg-center relative  transition-all duration-500"
-        style={{
-          backgroundImage: `url(${isMobile
-              ? currentIndex % 3 === 0
-                ? '/varkalawebb.jpg'
-                : currentIndex % 3 === 1
-                  ? '/munnarww.jpg'
-                  : '/wayanadwebb.jpg'
-              : getDesktopBg()
-            })`,
-        }}
+      <div className="relative w-full h-100vh lg:h-100vh overflow-hidden">
+        
+        {/* Background transition container */}
+        <div className="absolute inset-0 bg-white">
+          <div
+            className={`absolute inset-0 transition-transform duration-[1200ms] ease-in-out`}
+            style={{
+              backgroundImage: `url(${
+                isMobile
+                  ? backgrounds[currentIndex % backgrounds.length]
+                  : getDesktopBg()
+              })`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              transform: slideDirection === 'right'
+                ? 'translateX(0)'
+                : 'translateX(-100%)',
+            }}
+          />
+        </div>
 
-      >
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex justify-end items-center w-full text-lg p-15 space-x-20 text-white font-semibold">
-          <Link href="#">Home</Link>
-          <Link href="#">About Us</Link>
-          <Link href="#">Premium</Link>
-          <Link href="#">Blogs</Link>
-          <button className="border px-6 py-2 rounded-lg">Explore</button>
-        </nav>
+        {/* Foreground Content */}
+        <div className="relative top-0 left-0 w-full h-full bg-gradient-to-r to-transparent flex flex-col md:flex-row">
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex absolute top-6 right-10 space-x-20 text-lg text-white font-semibold">
+            <Link href="#">Home</Link>
+            <Link href="#">About Us</Link>
+            <Link href="#">Premium</Link>
+            <Link href="#">Blogs</Link>
+            <button className="border px-6 py-2 rounded-lg">Explore</button>
+          </nav>
 
-        {/* Hero Content */}
-        <div className="top-0 left-0 w-full h-full  bg-gradient-to-r to-transparent flex flex-col md:flex-row">
           {/* Left Text Content */}
-          <div className='relative p-6 md:p-16  w-full h-full flex flex-col  justify-center space-y-10'>
-            <div className="relative p-6 md:p-16 md:w-1/2 flex flex-col justify-center space-y-7 ">
-              <p className="text-md  md:text-lg uppercase text-white">Mountains | Plains | Beaches</p>
-              <h1 className="text-3xl md:text-6xl font-bold text-white ">
-                Spend your<br/> vacation <br />
-                with our activities
+          <div className="relative p-6 md:p-16 w-full h-full flex flex-col justify-center space-y-10">
+            <div className="relative p-6 md:p-16 md:w-1/2 flex flex-col justify-center space-y-7">
+              <p className="text-md md:text-lg uppercase text-white">Mountains | Plains | Beaches</p>
+              <h1 className="text-3xl md:text-6xl font-bold text-white">
+                Spend your<br /> vacation <br /> with our activities
               </h1>
 
               {/* Trip Cards */}
@@ -115,7 +135,7 @@ export default function HeroSection() {
                 <h2 className="font-semibold text-lg text-white mb-2">Most Popular</h2>
                 <div className="flex space-x-9 overflow-x-auto md:overflow-visible">
                   {isMobile ? (
-                    <div className="min-w-[160px] h-[200px] bg-white mt-5 rounded-lg shadow-md p-2 transition-all duration-500">
+                    <div className="min-w-[160px] h-[200px] bg-white mt-5 rounded-lg shadow-md p-2">
                       <img
                         src={trips[currentIndex].img}
                         alt={trips[currentIndex].name}
@@ -131,21 +151,14 @@ export default function HeroSection() {
                           className="flex transition-transform duration-700 ease-in-out"
                           style={{
                             transform: `translateX(-${(currentIndex / 3) * 100}%)`,
-                            width: `${(Math.ceil(trips.length / 3)) * 100}%`
+                            width: `${Math.ceil(trips.length / 3) * 100}%`,
                           }}
                         >
                           {Array.from({ length: Math.ceil(trips.length / 3) }).map((_, groupIndex) => (
                             <div className="flex space-x-6 min-w-full px-2" key={groupIndex}>
                               {trips.slice(groupIndex * 3, groupIndex * 3 + 3).map((trip, index) => (
-                                <div
-                                  key={index}
-                                  className="min-w-[160px] h-[200px] bg-white rounded-lg shadow-md p-2"
-                                >
-                                  <img
-                                    src={trip.img}
-                                    alt={trip.name}
-                                    className="rounded-md h-30 w-full object-cover"
-                                  />
+                                <div key={index} className="min-w-[160px] h-[200px] bg-white rounded-lg shadow-md p-2">
+                                  <img src={trip.img} alt={trip.name} className="rounded-md h-30 w-full object-cover" />
                                   <h3 className="text-sm text-black font-medium mt-2">{trip.name}</h3>
                                   <p className="text-xs text-black mt-2">{trip.people} people going</p>
                                 </div>
@@ -154,7 +167,6 @@ export default function HeroSection() {
                           ))}
                         </div>
                       </div>
-
                       <button className="text-orange-600 flex items-center">
                         <IoIosArrowForward size={20} />
                       </button>
@@ -162,16 +174,9 @@ export default function HeroSection() {
                   )}
                 </div>
               </div>
-
-
             </div>
             <SearchForm />
           </div>
-
-          {/* SearchForm */}
-          {/* <div className="absolute top-[75%] flex justify-center w-full">
-            
-          </div> */}
 
           {/* Mobile Nav Toggle */}
           <div className="absolute top-4 right-4 md:hidden z-50">
@@ -183,27 +188,16 @@ export default function HeroSection() {
           {/* Mobile Sidebar */}
           {isMenuOpen && (
             <div className="fixed top-0 right-0 w-3/4 h-full bg-white z-40 shadow-lg p-6 flex flex-col space-y-6 text-gray-800">
-              <Link href="#" className="text-lg font-semibold">
-                Home
-              </Link>
-              <Link href="#" className="text-lg font-semibold">
-                About Us
-              </Link>
-              <Link href="#" className="text-lg font-semibold">
-                Premium
-              </Link>
-              <Link href="#" className="text-lg font-semibold">
-                Blogs
-              </Link>
+              <Link href="#" className="text-lg font-semibold">Home</Link>
+              <Link href="#" className="text-lg font-semibold">About Us</Link>
+              <Link href="#" className="text-lg font-semibold">Premium</Link>
+              <Link href="#" className="text-lg font-semibold">Blogs</Link>
               <button className="border px-4 py-2 rounded-md">Explore</button>
               <button className="bg-orange-300 text-black px-4 py-2 rounded-md">Request a quote</button>
             </div>
           )}
-
         </div>
-
       </div>
-
     </>
   );
 }
