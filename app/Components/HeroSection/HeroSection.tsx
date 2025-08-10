@@ -30,7 +30,7 @@ export default function HeroSection() {
     if (isMobile) {
       const interval = setInterval(() => {
         setCurrentIndex((prev) => (prev + 1) % trips.length);
-      }, 9000);
+      }, 3000);
       return () => clearInterval(interval);
     }
   }, [isMobile, trips.length]);
@@ -40,7 +40,7 @@ export default function HeroSection() {
     if (!isMobile) {
       const interval = setInterval(() => {
         setCurrentIndex((prev) => (prev + 3) % trips.length);
-      }, 5000);
+      }, 6000);
       return () => clearInterval(interval);
     }
   }, [isMobile, trips.length]);
@@ -62,10 +62,13 @@ export default function HeroSection() {
           <h3 className="text-black font-bold">UK</h3>
         </div>
         <h3 className="hidden md:flex text-black text-md">Call us today until 17:30</h3>
-        <div className="flex gap-2 whitespace-nowrap">
-          <img src="/Symbol.png" alt="logo" className="h-6" />
-          <h3 className="text-black font-extrabold">1089 1235 6789</h3>
-        </div>
+       <div className="flex gap-2 whitespace-nowrap">
+  <img src="/Symbol.png" alt="logo" className="h-6" />
+  <a href="tel:108912356789" className="text-black font-extrabold hover:underline">
+    1089 1235 6789
+  </a>
+</div>
+
         <p className="hidden md:flex text-black">or</p>
         <button className="hidden md:flex bg-orange-300 text-white px-4 text-sm md:text-md py-2 rounded-full">
           Request a quote
