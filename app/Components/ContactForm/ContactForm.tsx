@@ -95,7 +95,7 @@ function ContactForm() {
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Your full name"
-                className="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-300"
+                className="w-full p-2 border rounded-md focus:ring-2"
                 required
               />
             </div>

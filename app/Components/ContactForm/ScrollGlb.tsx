@@ -12,7 +12,7 @@ function RotatingEarth({ scale }: { scale: [number, number, number] }) {
 
   useFrame(() => {
     if (modelRef.current) {
-      modelRef.current.rotation.y += 0.005 // smooth rotation
+      modelRef.current.rotation.y += 0.013 // smooth rotation
     }
   })
 
@@ -52,7 +52,7 @@ export default function ScrollGlb() {
         <directionalLight position={[0, 0, 6]} intensity={0.9} />
 
         {/* Rotating Earth */}
-        <RotatingEarth scale={isMobile ? [3.0, 3.0, 3.0] : [4.5, 4.5, 4.5]} />
+        <RotatingEarth scale={isMobile ? [4.2, 4.2, 4.2] : [4.5, 4.5, 4.5]} />
       </Canvas>
     </div>
   )

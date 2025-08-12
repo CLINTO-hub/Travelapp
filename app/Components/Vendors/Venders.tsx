@@ -72,7 +72,7 @@ export default function Vender() {
             The Vibrant Cultural Festivals Of Thrissur, Explore Curated Travel Experiences That Capture The Heart And
             Soul Of Kerala — One Unforgettable Journey At A Time.
           </p>
-          <button className="mt-4 px-6 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-orange-500 transition">
+          <button className="mt-4 px-6 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white active:bg-white hover:text-orange-500 transition">
             Explore More →
           </button>
         </div>
@@ -106,7 +106,7 @@ export default function Vender() {
             Get Personalized Assistance From A Dedicated Kerala Travel Expert Who’s Here To Help You Plan Your Dream Trip,
             Suggest Hidden Gems, And Make Every Step Smooth And Stress-Free.
           </p>
-          <button className="px-6 py-4 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition">
+          <button className="px-6 py-4 bg-blue-600 text-white rounded-md font-medium active:bg-blue-700 hover:bg-blue-700 transition">
             Connect
           </button>
         </div>

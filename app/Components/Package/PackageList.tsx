@@ -57,7 +57,7 @@ export default function PackageList() {
               alt={card.title}
               className="h-48 w-full object-cover"
             />
-            <div className="p-4  hover:bg-orange-300">
+            <div className="p-4  hover:bg-orange-300 active:bg-orange-300">
               <h3 className="text-lg font-semibold text-gray-900 mb-1">{card.title}</h3>
               <p className="text-sm text-gray-600">{card.description}</p>
             </div>

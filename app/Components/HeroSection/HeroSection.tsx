@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { useMediaQuery } from 'react-responsive';
 import SearchForm from '../SearchForm';
 
+
 export default function HeroSection() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isMobile = useMediaQuery({ maxWidth: 768 });
@@ -187,7 +188,16 @@ export default function HeroSection() {
 
           {/* Mobile Sidebar */}
           {isMenuOpen && (
+
+
+            
             <div className="fixed top-0 right-0 w-3/4 h-full bg-white z-40 shadow-lg p-6 flex flex-col space-y-6 text-gray-800">
+              <button 
+      onClick={() => setIsMenuOpen(false)} 
+      className="absolute top-4 right-4 text-2xl text-gray-600 hover:text-black"
+    >
+      <FaTimes />
+    </button>
               <Link href="#" className="text-lg font-semibold">Home</Link>
               <Link href="#" className="text-lg font-semibold">About Us</Link>
               <Link href="#" className="text-lg font-semibold">Premium</Link>

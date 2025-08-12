@@ -63,7 +63,7 @@ export default function TestimonialSlider() {
 
   return (
     <section
-      className="relative w-full min-h-[500px] md:min-h-[600px] flex flex-col md:flex-row items-center justify-center bg-cover bg-center  py-20 px-14"
+      className="relative w-full min-h-[500px] md:min-h-[600px] flex flex-col md:flex-row items-center justify-center bg-cover bg-center  py-20 px-4"
       style={{ backgroundImage: "url('/hills.png')" }}
     >
       {/* Blue Section */}
