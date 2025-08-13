@@ -88,15 +88,15 @@ export default function TestimonialSlider() {
       </div>
 
       {/* Slider Section */}
-      <div className="relative z-20 w-full md:w-[45%] mt-10 md:mt-0 px-2 md:ml-[-250px]">
+      <div className="relative z-20 w-full md:w-[50%] mt-10 md:mt-0  md:ml-[-250px]">
         <div className="overflow-hidden">
           <div
             className="flex transition-transform duration-500 ease-in-out"
             style={{ transform: `translateX(-${index * 100}%)` }}
           >
             {testimonials.map((t, i) => (
-              <div key={i} className="w-full md:w-[50%] px-1 md:px-5 flex-shrink-0">
-                <div className="bg-white text-black rounded-t-3xl rounded-b-[2.5rem] overflow-hidden relative h-[400px] md:h-[470px]">
+              <div key={i} className="w-full md:w-[53%] px-1 md:px-5 flex-shrink-0">
+                <div className="bg-white text-black rounded-t-3xl rounded-b-[2.5rem] overflow-hidden relative  h-[400px] md:h-[470px]">
                   <div className="relative w-full h-58 md:h-72 rounded-t-3xl overflow-hidden">
                     <Image
                       src={t.image}

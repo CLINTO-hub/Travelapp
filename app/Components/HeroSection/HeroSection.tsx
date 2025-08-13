@@ -147,7 +147,7 @@ export default function HeroSection() {
                     </div>
                   ) : (
                     <>
-                      <div className="overflow-hidden w-full max-w-[540px]">
+                      <div className="w-full">
                         <div
                           className="flex transition-transform duration-700 ease-in-out"
                           style={{

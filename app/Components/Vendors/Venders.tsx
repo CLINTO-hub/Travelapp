@@ -78,19 +78,19 @@ export default function Vender() {
         </div>
 
         {/* Floating Images */}
-        <div className="absolute left-6 md:left-20 top-20 rotate-[-6deg] z-30">
+        <div className="absolute left-6 md:left-10 top-20 rotate-[-6deg] z-30">
           <div className="hidden md:flex lg:flex relative w-32 h-32 md:w-44 md:h-44 border-[6px] border-white rounded-xl overflow-hidden shadow-xl">
             <Image src="/ret.png" alt="Elephant Ride" fill className="object-cover" />
           </div>
         </div>
 
-        <div className="absolute left-6 md:left-20 top-85 rotate-[15deg] z-30">
+        <div className="absolute left-6 md:left-10 top-85 rotate-[15deg] z-30">
           <div className="hidden md:flex lg:flex relative w-32 h-32 md:w-44 md:h-44 border-[6px] border-white rounded-xl overflow-hidden shadow-xl">
             <Image src="/elesafari.png" alt="Elephant Ride" fill className="object-cover" />
           </div>
         </div>
 
-        <div className="absolute right-6 md:right-20 bottom-14 md:bottom-32 z-30">
+        <div className="absolute right-9 md:right-8 bottom-14 md:bottom-32 z-30">
           <div className="hidden md:flex lg:flex relative w-24 h-34 md:w-52 md:h-80 rounded-full overflow-hidden border-[6px] border-white shadow-xl">
             <Image src="/rect.png" alt="Hiking" fill className="object-cover" />
           </div>

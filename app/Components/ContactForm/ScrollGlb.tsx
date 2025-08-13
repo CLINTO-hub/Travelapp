@@ -52,7 +52,7 @@ export default function ScrollGlb() {
         <directionalLight position={[0, 0, 6]} intensity={0.9} />
 
         {/* Rotating Earth */}
-        <RotatingEarth scale={isMobile ? [4.2, 4.2, 4.2] : [4.5, 4.5, 4.5]} />
+        <RotatingEarth scale={isMobile ? [4.2, 4.2, 4.2] : [6.5, 6.5, 6.5]} />
       </Canvas>
     </div>
   )

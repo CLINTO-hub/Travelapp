@@ -59,15 +59,15 @@ function ContactForm() {
         }].map((item, index) => (
           <div
             key={index}
-            className="p-4 rounded-lg bg-white/80 backdrop-blur-sm border shadow hover:shadow-blue-500/20 transition-all"
+            className="p-3 rounded-lg w-full bg-white/80 backdrop-blur-sm border shadow hover:shadow-blue-500/20 transition-all"
           >
-            <div className="flex items-center space-x-3">
+            <div className="flex w-full items-center space-x-3">
               <div className="p-2 rounded-lg bg-blue-100">
                 {item.icon}
               </div>
               <div>
                 <p className="font-medium text-black">{item.title}</p>
-                <p className="text-sm text-gray-700">{item.text}</p>
+                <p className="text-sm  text-gray-700">{item.text}</p>
               </div>
             </div>
           </div>
