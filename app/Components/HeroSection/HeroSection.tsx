@@ -120,9 +120,9 @@ export default function HeroSection() {
             <Link href="/#venders" className="text-white hover:text-blue-500">Partners</Link>
             <Link href="/#testimonial" className="text-white hover:text-blue-500">Testimonial</Link>
             <Link href='/#contact'>
-            <button className="border px-6 py-2 rounded-lg text-white hover:bg-white hover:text-blue-500 transition">
-              Contact
-            </button>
+              <button className="border px-6 py-2 rounded-lg text-white hover:bg-white hover:text-blue-500 transition">
+                Contact
+              </button>
             </Link>
           </nav>
 
@@ -209,11 +209,13 @@ export default function HeroSection() {
               >
                 <FaTimes />
               </button>
-              <Link href="#" className="text-lg font-semibold">Home</Link>
-              <Link href="#" className="text-lg font-semibold">About Us</Link>
-              <Link href="#" className="text-lg font-semibold">Premium</Link>
-              <Link href="#" className="text-lg font-semibold">Blogs</Link>
-              <button className="border px-4 py-2 rounded-md">Explore</button>
+              <Link href="/" className="text-white hover:text-blue-500">Home</Link>
+              <Link href="/#PackageList" className="text-white hover:text-blue-500">Packages</Link>
+              <Link href="/#venders" className="text-white hover:text-blue-500">Partners</Link>
+              <Link href="/#testimonial" className="text-white hover:text-blue-500">Testimonial</Link>
+              <Link href='/#contact'>
+                <button className="border px-4 py-2 rounded-md">Explore</button>
+              </Link>
               <button className="bg-orange-300 text-black px-4 py-2 rounded-md">Request a quote</button>
             </div>
           )}
