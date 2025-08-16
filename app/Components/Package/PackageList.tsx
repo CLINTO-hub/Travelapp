@@ -41,7 +41,7 @@ const themeCards: ThemeCardProps[] = [
 
 export default function PackageList() {
   return (
-    <section className="py-12 px-4 md:px-8 bg-white">
+    <section id="PackageList" className="py-12 px-4 md:px-8 bg-white">
       <h2 className="text-2xl md:text-3xl font-semibold text-center mb-10 text-gray-800">
         Plan Your Kerala Journey By Theme
       </h2>

@@ -91,18 +91,17 @@ export default function HeroSection() {
       </div>
 
       {/* Hero Section */}
-      <div className="relative w-full h-100vh lg:h-100vh overflow-hidden">
-        
+      <div className="relative w-full h-100vh lg:h-100vh">
+
         {/* Background transition container */}
         <div className="absolute inset-0 bg-white">
           <div
             className={`absolute inset-0 transition-transform duration-[1200ms] ease-in-out`}
             style={{
-              backgroundImage: `url(${
-                isMobile
-                  ? backgrounds[currentIndex % backgrounds.length]
-                  : getDesktopBg()
-              })`,
+              backgroundImage: `url(${isMobile
+                ? backgrounds[currentIndex % backgrounds.length]
+                : getDesktopBg()
+                })`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               transform: slideDirection === 'right'
@@ -115,21 +114,30 @@ export default function HeroSection() {
         {/* Foreground Content */}
         <div className="relative top-0 left-0 w-full h-full bg-gradient-to-r to-transparent flex flex-col md:flex-row">
           {/* Desktop Nav */}
-          <nav className="hidden md:flex absolute top-6 right-10 space-x-20 text-lg text-white font-semibold">
-            <Link href="#">Home</Link>
-            <Link href="#">About Us</Link>
-            <Link href="#">Premium</Link>
-            <Link href="#">Blogs</Link>
-            <button className="border px-6 py-2 rounded-lg">Explore</button>
+          <nav className="hidden md:flex justify-center items-center absolute top-6 right-10 space-x-20 text-lg font-semibold z-50">
+            <Link href="/" className="text-white hover:text-blue-500">Home</Link>
+            <Link href="/#PackageList" className="text-white hover:text-blue-500">Packages</Link>
+            <Link href="/#venders" className="text-white hover:text-blue-500">Partners</Link>
+            <Link href="/#testimonial" className="text-white hover:text-blue-500">Testimonial</Link>
+            <Link href='/#contact'>
+            <button className="border px-6 py-2 rounded-lg text-white hover:bg-white hover:text-blue-500 transition">
+              Contact
+            </button>
+            </Link>
           </nav>
 
           {/* Left Text Content */}
-          <div className="relative p-6 md:p-16 w-full h-full flex flex-col justify-center space-y-10">
-            <div className="relative p-6 md:p-16 md:w-1/2 flex flex-col justify-center space-y-7">
+          <div className="relative  md:p-16 w-full h-full flex flex-col justify-center space-y-5 px-3 py-6">
+            <div className="relative p-6  flex flex-col justify-center space-y-5">
               <p className="text-md md:text-lg uppercase text-white">Mountains | Plains | Beaches</p>
-              <h1 className="text-3xl md:text-6xl font-bold text-white">
-                Spend your<br /> vacation <br /> with our activities
-              </h1>
+              <div className="relative md:p-5  ">
+                <h1 className="text-4xl md:text-6xl font-bold text-white">
+                  <span className="block mb-2">Spend your</span>
+                  <span className="block mb-2">vacation</span>
+                  <span className="block mb-2">with our activities</span>
+                </h1>
+              </div>
+
 
               {/* Trip Cards */}
               <div>
@@ -147,30 +155,33 @@ export default function HeroSection() {
                     </div>
                   ) : (
                     <>
-                      <div className="w-full">
-                        <div
-                          className="flex transition-transform duration-700 ease-in-out"
-                          style={{
-                            transform: `translateX(-${(currentIndex / 3) * 100}%)`,
-                            width: `${Math.ceil(trips.length / 3) * 100}%`,
-                          }}
-                        >
-                          {Array.from({ length: Math.ceil(trips.length / 3) }).map((_, groupIndex) => (
-                            <div className="flex space-x-6 min-w-full px-2" key={groupIndex}>
-                              {trips.slice(groupIndex * 3, groupIndex * 3 + 3).map((trip, index) => (
-                                <div key={index} className="min-w-[160px] h-[200px] bg-white rounded-lg shadow-md p-2">
-                                  <img src={trip.img} alt={trip.name} className="rounded-md h-30 w-full object-cover" />
-                                  <h3 className="text-sm text-black font-medium mt-2">{trip.name}</h3>
-                                  <p className="text-xs text-black mt-2">{trip.people} people going</p>
-                                </div>
-                              ))}
-                            </div>
-                          ))}
+                      <div className='flex items-center justify-between overflow-hidden'>
+                        <div className="w-full overflow-hidden">
+                          <div
+                            className="flex transition-transform duration-700 ease-in-out"
+                            style={{
+                              transform: `translateX(-${(currentIndex / 3) * 100}%)`,
+                              width: `${Math.ceil(trips.length / 3) * 100}%`,
+                            }}
+                          >
+                            {Array.from({ length: Math.ceil(trips.length / 3) }).map((_, groupIndex) => (
+                              <div className="flex space-x-6 min-w-full px-2" key={groupIndex}>
+                                {trips.slice(groupIndex * 3, groupIndex * 3 + 3).map((trip, index) => (
+                                  <div key={index} className="min-w-[160px] h-[200px] bg-white rounded-lg shadow-md p-2">
+                                    <img src={trip.img} alt={trip.name} className="rounded-md h-30 w-full object-cover" />
+                                    <h3 className="text-sm text-black font-medium mt-2">{trip.name}</h3>
+                                    <p className="text-xs text-black mt-2">{trip.people} people going</p>
+                                  </div>
+                                ))}
+                              </div>
+                            ))}
+                          </div>
+
                         </div>
+
+
                       </div>
-                      <button className="text-orange-600 flex items-center">
-                        <IoIosArrowForward size={20} />
-                      </button>
+
                     </>
                   )}
                 </div>
@@ -190,14 +201,14 @@ export default function HeroSection() {
           {isMenuOpen && (
 
 
-            
+
             <div className="fixed top-0 right-0 w-3/4 h-full bg-white z-40 shadow-lg p-6 flex flex-col space-y-6 text-gray-800">
-              <button 
-      onClick={() => setIsMenuOpen(false)} 
-      className="absolute top-4 right-4 text-2xl text-gray-600 hover:text-black"
-    >
-      <FaTimes />
-    </button>
+              <button
+                onClick={() => setIsMenuOpen(false)}
+                className="absolute top-4 right-4 text-2xl text-gray-600 hover:text-black"
+              >
+                <FaTimes />
+              </button>
               <Link href="#" className="text-lg font-semibold">Home</Link>
               <Link href="#" className="text-lg font-semibold">About Us</Link>
               <Link href="#" className="text-lg font-semibold">Premium</Link>

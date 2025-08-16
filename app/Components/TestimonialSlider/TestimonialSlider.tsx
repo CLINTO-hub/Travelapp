@@ -24,7 +24,7 @@ const testimonials = [
     image: '/re3.jpg',
     rating: 4,
     feedback:
-      'Kerala was magical and the planning made it effortless. Loved every moment of it!',
+      'Kerala was magical and the planning made it effortless.',
   },
   {
     name: 'Vidhya',
@@ -63,11 +63,12 @@ export default function TestimonialSlider() {
 
   return (
     <section
+      id='testimonial'
       className="relative w-full min-h-[500px] md:min-h-[600px] flex flex-col md:flex-row items-center justify-center bg-cover bg-center  py-20 px-4"
       style={{ backgroundImage: "url('/hills.png')" }}
     >
       {/* Blue Section */}
-      <div className="relative z-10 w-full md:w-[100%]  max-w-[750px] bg-[#003b72] rounded-l-3xl rounded-r-[80px] flex flex-col justify-center px-6 md:px-10 md:py-15 shadow-xl">
+      <div className="relative z-10 w-full md:w-full  max-w-[750px] bg-[#003b72] rounded-l-3xl rounded-r-[80px] flex flex-col justify-center px-6 md:px-10 md:py-15 shadow-xl">
         {/* Quote Icon */}
         <div className="absolute -top-14 left-6 md:left-10 bg-blue-500 w-24 h-24 md:w-28 md:h-28 rounded-full flex items-center justify-center text-white text-4xl md:text-5xl shadow-lg border-8 border-white">
           <FaQuoteLeft />
@@ -88,14 +89,14 @@ export default function TestimonialSlider() {
       </div>
 
       {/* Slider Section */}
-      <div className="relative z-20 w-full md:w-[50%] mt-10 md:mt-0  md:ml-[-250px]">
+      <div className="relative z-20 w-full  md:w-[50%] mt-10 md:mt-0  md:ml-[-250px]">
         <div className="overflow-hidden">
           <div
             className="flex transition-transform duration-500 ease-in-out"
             style={{ transform: `translateX(-${index * 100}%)` }}
           >
             {testimonials.map((t, i) => (
-              <div key={i} className="w-full md:w-[53%] px-1 md:px-5 flex-shrink-0">
+              <div key={i} className="w-full md:w-[50%] px-1 md:px-3  py-3  flex-shrink-0">
                 <div className="bg-white text-black rounded-t-3xl rounded-b-[2.5rem] overflow-hidden relative  h-[400px] md:h-[470px]">
                   <div className="relative w-full h-58 md:h-72 rounded-t-3xl overflow-hidden">
                     <Image

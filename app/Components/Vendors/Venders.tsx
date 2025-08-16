@@ -3,7 +3,7 @@
 import { useRef, useState } from 'react';
 import Image from 'next/image';
 
-export default function Vender() {
+export default function   Vender() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -51,7 +51,7 @@ export default function Vender() {
   ];
 
   return (
-    <section className="w-full bg-white">
+    <section id='venders' className="w-full bg-white">
       {/* Top Hero Section */}
       <div className="relative w-full text-white px-4 py-20 md:py-40">
         {/* Background Image Layer 1: Fire-Orange */}
@@ -100,8 +100,8 @@ export default function Vender() {
       {/* Expert Section */}
       <div className="w-full mx-auto py-12 md:py-16 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
         {/* Left Content */}
-        <div className="md:w-1/2 px-6 md:px-20">
-          <h2 className="text-3xl md:text-5xl text-black font-bold mb-4">Meet The Expert Behind Your Kerala Journey</h2>
+        <div className="md:w-[70%] px-5">
+          <h2 className="text-3xl md:text-5xl text-black font-bold mb-4 ">Meet The Expert Behind Your Kerala Journey</h2>
           <p className="text-gray-700 text-lg md:text-xl mb-6">
             Get Personalized Assistance From A Dedicated Kerala Travel Expert Who’s Here To Help You Plan Your Dream Trip,
             Suggest Hidden Gems, And Make Every Step Smooth And Stress-Free.

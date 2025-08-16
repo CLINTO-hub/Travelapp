@@ -41,7 +41,7 @@ function ContactForm() {
 
       {/* Contact Info Cards */}
       <div
-        className="grid grid-cols-1 md:grid-cols-3 gap-4"
+        className="grid grid-cols-1 md:grid-cols-2 gap-4"
         style={{ animation: 'fadeIn 0.6s ease-out 0.2s both' }}
       >
         {[{
