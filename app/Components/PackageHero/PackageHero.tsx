@@ -1,78 +1,19 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { FaBars, FaTimes } from 'react-icons/fa';
-import { IoIosArrowForward } from 'react-icons/io';
+import { useState } from 'react';
 import Link from 'next/link';
+import { FaBars, FaTimes } from 'react-icons/fa';
 import { useMediaQuery } from 'react-responsive';
-import SearchForm from '../SearchForm';
-
 
 export default function PackageHero() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const isMobile = useMediaQuery({ maxWidth: 768 });
-
-  const trips = [
-    { name: 'Trip To Varkala', people: 27, img: '/Varkala.png' },
-    { name: 'Trip To Munnar', people: 31, img: '/Munnar.png' },
-    { name: 'Trip To Wayanad', people: 20, img: '/Wayanad.png' },
-    { name: 'Trip To Varkala', people: 27, img: '/Varkala.png' },
-    { name: 'Trip To Munnar', people: 31, img: '/Munnar.png' },
-    { name: 'Trip To Wayanad', people: 20, img: '/Wayanad.png' },
-    { name: 'Trip To Varkala', people: 27, img: '/Varkala.png' },
-    { name: 'Trip To Munnar', people: 31, img: '/Munnar.png' },
-    { name: 'Trip To Wayanad', people: 20, img: '/Wayanad.png' },
-  ];
-
-  const mobileBgs = ['/varkalawebb.jpg', '/munnarww.jpg', '/wayanadwebb.jpg'];
-  const desktopBgs = ['/varkalawebb.jpg', '/munnarww.jpg', '/wayanadwebb.jpg'];
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [slideDirection, setSlideDirection] = useState('right');
-  const [imageLoaded, setImageLoaded] = useState(false);
-
-  const backgrounds = isMobile ? mobileBgs : desktopBgs;
-
-  // Preload background images to avoid flicker
-  useEffect(() => {
-    backgrounds.forEach((src) => {
-      const img = new Image();
-      img.src = src;
-    });
-    setImageLoaded(true);
-  }, [backgrounds]);
-
-  // Auto-slide for mobile
-  useEffect(() => {
-    if (isMobile) {
-      const interval = setInterval(() => {
-        setSlideDirection('right');
-        setCurrentIndex((prev) => (prev + 1) % backgrounds.length);
-      }, 4000);
-      return () => clearInterval(interval);
-    }
-  }, [isMobile, backgrounds.length]);
-
-  // Auto-slide for desktop (every 3 cards)
-  useEffect(() => {
-    if (!isMobile) {
-      const interval = setInterval(() => {
-        setSlideDirection('right');
-        setCurrentIndex((prev) => (prev + 3) % trips.length);
-      }, 7000);
-      return () => clearInterval(interval);
-    }
-  }, [isMobile, trips.length]);
-
-  const getDesktopBg = () => {
-    const group = Math.floor(currentIndex / 3) % 3;
-    return desktopBgs[group];
-  };
+  
 
   return (
+
     <>
-      {/* Top Contact Bar */}
-      <div className="flex items-center justify-end bg-white px-4 md:px-10 py-4 gap-5">
+
+    <div className="flex items-center justify-end bg-white px-4 md:px-10 py-4 gap-5">
         <div className="flex gap-2 whitespace-nowrap">
           <img src="/uk.png" alt="log" className="h-6" />
           <h3 className="text-black font-bold">UK</h3>
@@ -90,79 +31,76 @@ export default function PackageHero() {
         </button>
       </div>
 
-      {/* Hero Section */}
-      <div className="relative w-full h-100vh lg:h-100vh">
+    <div className="relative w-full h-screen lg:h-100vh">
+      {/* Background image */}
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: "url('/munnardetail.png')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      />
 
-        {/* Background transition container */}
-        <div className="absolute inset-0 bg-white">
-          <div
-            className={`absolute inset-0 transition-transform duration-[1200ms] ease-in-out`}
-            style={{
-              backgroundImage: `url(${isMobile
-                ? backgrounds[currentIndex % backgrounds.length]
-                : getDesktopBg()
-                })`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              transform: slideDirection === 'right'
-                ? 'translateX(0)'
-                : 'translateX(-100%)',
-            }}
-          />
-        </div>
+      {/* Overlay to make text readable */}
+      <div className="absolute inset-0 bg-black/20"></div>
 
-        {/* Foreground Content */}
-        <div className="relative top-0 left-0 w-full h-full bg-gradient-to-r to-transparent flex flex-col md:flex-row">
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex justify-center items-center absolute top-6 right-10 space-x-20 text-lg font-semibold z-50">
-            <Link href="/" className="text-white hover:text-blue-500">Home</Link>
-            <Link href="/#PackageList" className="text-white hover:text-blue-500">Packages</Link>
-            <Link href="/#venders" className="text-white hover:text-blue-500">Partners</Link>
-            <Link href="/#testimonial" className="text-white hover:text-blue-500">Testimonial</Link>
-            <Link href='/#contact'>
-              <button className="border px-6 py-2 rounded-lg text-white hover:bg-white hover:text-blue-500 transition">
-                Contact
-              </button>
-            </Link>
-          </nav>
+      {/* Navbar */}
+      <div className='relative top-0 left-0 w-full h-full bg-gradient-to-r to-transparent flex flex-col md:flex-row'>
+      <nav className="hidden md:flex justify-center items-center absolute top-6 right-10 space-x-20 text-lg font-semibold z-50">
+        <Link href="/" className="text-white hover:text-blue-500">Home</Link>
+        <Link href="/#PackageList" className="text-white hover:text-blue-500">Packages</Link>
+        <Link href="/#venders" className="text-white hover:text-blue-500">Partners</Link>
+        <Link href="/#testimonial" className="text-white hover:text-blue-500">Testimonial</Link>
+        <Link href="/#contact">
+          <button className="border border-white text-white px-4 py-1 md:px-6 md:py-2 rounded-lg hover:bg-white hover:text-blue-500 transition">
+            Contact
+          </button>
+        </Link>
 
-          {/* Left Text Content */}
-          {/* <div className="relative  md:p-16 w-full h-full flex flex-col justify-center space-y-5 px-3 py-6">
-            
-            <SearchForm />
-          </div> */}
+        {/* Mobile menu toggle */}
+       
 
-          {/* Mobile Nav Toggle */}
-          <div className="absolute top-4 right-4 md:hidden z-50">
-            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white text-2xl">
-              {isMenuOpen ? <FaTimes /> : <FaBars />}
-            </button>
-          </div>
-
-          {/* Mobile Sidebar */}
-          {isMenuOpen && (
+      </nav>
 
 
+      <div className="absolute top-6 right-6 md:hidden z-50">
+    <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white text-2xl">
+      {isMenuOpen ? <FaTimes /> : <FaBars />}
+    </button>
+  </div>
 
-            <div className="fixed top-0 right-0 w-3/4 h-full bg-white z-40 shadow-lg p-6 flex flex-col space-y-6 text-gray-800">
-              <button
-                onClick={() => setIsMenuOpen(false)}
-                className="absolute top-4 right-4 text-2xl text-gray-600 hover:text-black"
-              >
-                <FaTimes />
-              </button>
-              <Link href="/" className="text-black font-semibold active:text-blue-500 hover:text-blue-500">Home</Link>
+
+      {/* Mobile Sidebar */}
+      {isMenuOpen && (
+        <div className="fixed top-0 right-0 w-3/4 h-full bg-white z-40 shadow-lg p-6 flex flex-col space-y-6 text-gray-800">
+          <button
+            onClick={() => setIsMenuOpen(false)}
+            className="absolute top-4 right-4 text-2xl text-gray-600 hover:text-black"
+          >
+            <FaTimes />
+          </button>
+           <Link href="/" className="text-black font-semibold active:text-blue-500 hover:text-blue-500">Home</Link>
               <Link href="/#PackageList" className="text-black font-semibold active:text-blue-500 hover:text-blue-500">Packages</Link>
               <Link href="/#venders" className="text-black font-semibold active:text-blue-500 hover:text-blue-500">Partners</Link>
               <Link href="/#testimonial" className="text-black font-semibold active:text-blue-500 hover:text-blue-500">Testimonial</Link>
               <Link href='/#contact'>
-                <button className="border px-4 py-2 font-semibold rounded-md">Explore</button>
+                <button className="border px-4 py-2 font-semibold rounded-md">Contact</button>
               </Link>
-              <button className="bg-orange-300 text-black px-4 py-2 rounded-md">Request a quote</button>
-            </div>
-          )}
+            <button className="bg-orange-300 text-black px-4 py-2 rounded-md">Request a quote</button>
+          
         </div>
+      )}
+
+      {/* Bottom Route Bar */}
+      <div className="absolute bottom-0 w-full bg-black/60 text-white text-center py-4">
+        <h2 className="font-bold text-lg md:text-xl">Route</h2>
+        <p className="text-sm md:text-base">
+          Kochi – Muttupatty – Munnar – Mattupetty – Kerala Backwaters – Kochi
+        </p>
       </div>
+    </div>
+    </div>
     </>
   );
 }

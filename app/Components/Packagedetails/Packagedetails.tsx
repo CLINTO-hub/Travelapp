@@ -3,10 +3,10 @@ import React from "react";
 
 const PackageDetails: React.FC = () => {
   return (
-    <div className="flex flex-col md:flex-row justify-between items-start md:items-stretch gap-6 p-6 bg-white">
+    <div className="flex flex-col md:flex-row justify-between items-start md:items-stretch gap-6 p-6 md:py-10 bg-white">
       {/* Left Section */}
       <div className="flex-1 space-y-4">
-        <h2 className="text-xl md:text-2xl font-bold text-black">
+        <h2 className="text-xl md:text-3xl font-bold text-black">
           7 Days from ₹XX,XXX per person
         </h2>
         <p className="text-gray-700 leading-relaxed">
@@ -17,7 +17,7 @@ const PackageDetails: React.FC = () => {
           exploring plantations, lakes, and wildlife sanctuaries. Conclude your
           journey with a serene houseboat cruise through Kerala’s backwaters.
         </p>
-        <button className="bg-[#FFA726] text-white font-semibold px-6 py-2 rounded-md shadow hover:bg-orange-600 transition">
+        <button className="bg-[#FFA726] text-white font-semibold px-6 py-3 rounded-md shadow hover:bg-orange-600 transition">
           View Brochure
         </button>
       </div>

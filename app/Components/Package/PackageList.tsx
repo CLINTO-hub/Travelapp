@@ -1,5 +1,7 @@
 'use client';
 
+import Link from "next/link";
+
 interface ThemeCardProps {
   title: string;
   description: string;
@@ -48,6 +50,7 @@ export default function PackageList() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-12 max-w-7xl mx-auto">
         {themeCards.map((card, idx) => (
+          <Link href={"/Packagedetail"} key={idx} className="group">
           <div
             key={idx}
             className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300"
@@ -62,6 +65,7 @@ export default function PackageList() {
               <p className="text-sm text-gray-600">{card.description}</p>
             </div>
           </div>
+          </Link>
         ))}
       </div>
     </section>

@@ -12,26 +12,32 @@ const logos = [
 
 export default function Partners() {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const animationRef = useRef<number | null>(null);
 
   useEffect(() => {
     const scrollContainer = scrollRef.current;
     if (!scrollContainer) return;
 
-    const scrollStep = 1; // speed of scroll (px per tick)
+    const scrollStep = 0.5; // speed (px per frame)
 
-    const scrollInterval = setInterval(() => {
+    const scroll = () => {
       if (
         scrollContainer.scrollLeft >=
         scrollContainer.scrollWidth - scrollContainer.clientWidth
       ) {
-        // instantly jump back to start (no flicker because of duplicated logos)
-        scrollContainer.scrollLeft = 0;
+        scrollContainer.scrollLeft = 0; // reset to start
       } else {
         scrollContainer.scrollLeft += scrollStep;
       }
-    }, 10); // adjust timing for smoothness
 
-    return () => clearInterval(scrollInterval);
+      animationRef.current = requestAnimationFrame(scroll);
+    };
+
+    animationRef.current = requestAnimationFrame(scroll);
+
+    return () => {
+      if (animationRef.current) cancelAnimationFrame(animationRef.current);
+    };
   }, []);
 
   return (

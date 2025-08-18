@@ -214,7 +214,7 @@ export default function HeroSection() {
               <Link href="/#venders" className="text-black font-semibold active:text-blue-500 hover:text-blue-500">Partners</Link>
               <Link href="/#testimonial" className="text-black font-semibold active:text-blue-500 hover:text-blue-500">Testimonial</Link>
               <Link href='/#contact'>
-                <button className="border px-4 py-2 font-semibold rounded-md">Explore</button>
+                <button className="border px-4 py-2 font-semibold rounded-md">Contact</button>
               </Link>
               <button className="bg-orange-300 text-black px-4 py-2 rounded-md">Request a quote</button>
             </div>
