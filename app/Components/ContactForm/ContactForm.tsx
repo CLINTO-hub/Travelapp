@@ -80,7 +80,7 @@ function ContactForm() {
         style={{ animation: 'fadeIn 0.6s ease-out 0.4s both' }}
       >
         <div className="mb-6">
-          <h3 className="text-xl font-semibold">Send us a message</h3>
+          <h3 className="text-xl text-black font-semibold">Send us a message</h3>
           <p className="text-sm text-gray-500">
             Fill out the form and we&apos;ll respond within 24 hours.
           </p>
@@ -88,19 +88,19 @@ function ContactForm() {
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <label htmlFor="name" className="block font-medium">Name</label>
+              <label htmlFor="name" className="block text-black font-medium">Name</label>
               <input
                 id="name"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Your full name"
-                className="w-full p-2 border rounded-md focus:ring-2"
+                className="w-full p-2 text-gray-500 border rounded-md focus:ring-2"
                 required
               />
             </div>
             <div className="space-y-2">
-              <label htmlFor="email" className="block font-medium">Email</label>
+              <label htmlFor="email" className="block text-black font-medium">Email</label>
               <input
                 id="email"
                 name="email"
@@ -108,41 +108,41 @@ function ContactForm() {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="your.email@example.com"
-                className="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-300"
+                className="w-full p-2 border text-gray-500 rounded-md focus:ring-2 focus:ring-blue-300"
                 required
               />
             </div>
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="subject" className="block font-medium">Subject</label>
+            <label htmlFor="subject" className="block text-black font-medium">Subject</label>
             <input
               id="subject"
               name="subject"
               value={formData.subject}
               onChange={handleChange}
               placeholder="What&apos;s this about?"
-              className="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-300"
+              className="w-full p-2 border rounded-md text-gray-500 focus:ring-2 focus:ring-blue-300"
               required
             />
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="message" className="block font-medium">Message</label>
+            <label htmlFor="message" className="block text-black font-medium">Message</label>
             <textarea
               id="message"
               name="message"
               value={formData.message}
               onChange={handleChange}
               placeholder="Tell us more about your project or inquiry..."
-              className="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-300 min-h-[120px]"
+              className="w-full p-2 border rounded-md text-gray-500 focus:ring-2 focus:ring-blue-300 min-h-[120px]"
               required
             />
           </div>
 
           <button
             type="submit"
-            className="w-full py-3 rounded-md bg-gradient-to-r bg-[#002d62] text-white font-semibold hover:bg-[#121820] transition-all shadow-md"
+            className="w-full py-3 rounded-md bg-gradient-to-r  bg-[#002d62] text-white font-semibold hover:bg-[#121820] transition-all shadow-md"
           >
             Send Message
           </button>

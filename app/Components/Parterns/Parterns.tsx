@@ -8,44 +8,46 @@ const logos = [
   { src: "/Airbnb.png", alt: "Airbnb" },
   { src: "/Ait.png", alt: "AITO" },
   { src: "/Vistara.png", alt: "Vistara" },
+  { src: "/indigo.png", alt: "Indigo" },
+  { src: "/travel.png", alt: "Travel Aware" },
+  { src: "/Airbnb.png", alt: "Airbnb" },
+   { src: "/Airbnb.png", alt: "Airbnb" },
+  { src: "/Ait.png", alt: "AITO" },
+  { src: "/Vistara.png", alt: "Vistara" },
 ];
 
 export default function Partners() {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const animationRef = useRef<number | null>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const scrollContainer = scrollRef.current;
-    if (!scrollContainer) return;
+    const track = trackRef.current;
+    if (!track) return;
 
-    const scrollStep = 0.5; // speed (px per frame)
+    let x = 0;
+    const speed = 0.5; // px per frame
+    let totalWidth = track.scrollWidth / 2; // width of one cycle
 
-    const scroll = () => {
-      if (
-        scrollContainer.scrollLeft >=
-        scrollContainer.scrollWidth - scrollContainer.clientWidth
-      ) {
-        scrollContainer.scrollLeft = 0; // reset to start
-      } else {
-        scrollContainer.scrollLeft += scrollStep;
+    const animate = () => {
+      x -= speed;
+
+      if (Math.abs(x) >= totalWidth) {
+        x = 0; // reset after one cycle
       }
 
-      animationRef.current = requestAnimationFrame(scroll);
+      track.style.transform = `translateX(${x}px)`;
+      requestAnimationFrame(animate);
     };
 
-    animationRef.current = requestAnimationFrame(scroll);
-
-    return () => {
-      if (animationRef.current) cancelAnimationFrame(animationRef.current);
-    };
+    requestAnimationFrame(animate);
   }, []);
 
   return (
     <div className="w-full bg-white py-6 overflow-hidden">
       <div
-        ref={scrollRef}
-        className="flex gap-12 whitespace-nowrap overflow-x-hidden"
+        ref={trackRef}
+        className="flex gap-12 whitespace-nowrap will-change-transform"
       >
+        {/* Duplicate once for seamless loop */}
         {[...logos, ...logos].map((logo, i) => (
           <div
             key={i}

@@ -28,7 +28,7 @@ const tourSpots: TourSpot[] = [
 export default function SimilarTourSpot() {
   return (
     <section className="py-12 px-4 md:px-8">
-      <h2 className="text-center text-2xl font-bold mb-8">
+      <h2 className="text-center text-2xl text-black font-bold mb-8">
         Similar Tour Spot
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
