@@ -36,7 +36,7 @@ export default function PackageHero() {
       <div
         className="absolute  inset-0"
         style={{
-          backgroundImage: "url('/munnardetail.png')",
+          backgroundImage: "url('/munnardetailnew.png')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
