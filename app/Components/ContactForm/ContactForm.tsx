@@ -30,10 +30,10 @@ function ContactForm() {
         className="text-center lg:text-left space-y-4"
         style={{ animation: 'fadeIn 0.6s ease-out' }}
       >
-        <h2 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+        <h2 className="text-3xl lg:text-4xl font-bold text-[#002d62] bg-clip-text  ">
           Get In Touch
         </h2>
-        <p className="text-lg text-muted-foreground text-black max-w-lg">
+        <p className="text-lg text-muted-foreground text-black max-w-lg md:mt-8">
           Have a question or want to work together? We&apos;d love to hear from you. 
           Send us a message and we&apos;ll respond as soon as possible.
         </p>

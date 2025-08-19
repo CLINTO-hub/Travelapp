@@ -6,7 +6,7 @@ import ScrollGlb from './ScrollGlb'
 
 function ContactSection() {
   return (
-    <section id='contact' className="min-h-screen   bg-gradient-to-br  from-white  via-gray-50 to-black py-20 lg:py-24">
+    <section id='contact' className="min-h-screen   bg-gradient-to-br  from-white  via-gray-50  py-10 lg:py-24">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Globe Section - Left Side */}
