@@ -8,12 +8,11 @@ const logos = [
   { src: "/Airbnb.png", alt: "Airbnb" },
   { src: "/Ait.png", alt: "AITO" },
   { src: "/Vistara.png", alt: "Vistara" },
-  { src: "/indigo.png", alt: "Indigo" },
   { src: "/travel.png", alt: "Travel Aware" },
-  { src: "/Airbnb.png", alt: "Airbnb" },
-   { src: "/Airbnb.png", alt: "Airbnb" },
+  { src: "/Airbnb.png", alt: "Airbnb" }, 
   { src: "/Ait.png", alt: "AITO" },
   { src: "/Vistara.png", alt: "Vistara" },
+  { src: "/Airbnb.png", alt: "Airbnb" },
 ];
 
 export default function Partners() {
