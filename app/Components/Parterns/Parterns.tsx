@@ -25,7 +25,7 @@ export default function Partners() {
 
     let x = 0;
     const speed = 0.5; // px per frame
-    let totalWidth = track.scrollWidth / 2; // width of one cycle
+    const  totalWidth = track.scrollWidth / 2; // width of one cycle
 
     const animate = () => {
       x -= speed;
