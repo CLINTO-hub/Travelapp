@@ -31,10 +31,10 @@ export default function PackageHero() {
         </button>
       </div>
 
-    <div className="relative w-full h-screen lg:h-100vh">
+    <div className="relative w-full h-160 md:h-100vh   lg:h-100vh">
       {/* Background image */}
       <div
-        className="absolute inset-0"
+        className="absolute  inset-0"
         style={{
           backgroundImage: "url('/munnardetail.png')",
           backgroundSize: 'cover',
