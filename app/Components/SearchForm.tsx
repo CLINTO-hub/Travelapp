@@ -176,7 +176,7 @@ export default function SearchForm() {
           <input
             type="text"
             placeholder="Search destination"
-            className="px-4 py-1 w-full rounded-md border border-black text-black focus:outline-none focus:ring-2 focus:ring-orange-300"
+            className="px-4 py-1 w-full rounded-md border border-black text-black focus:outline-none focus:ring-2 focus:ring-blue-300"
           />
           <button className="flex justify-center items-center bg-blue-500 hover:bg-blue-800 text-white font-bold py-3 px-3 rounded-md shadow-md transition-all duration-200">
             <FaSearch />
